@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method CPSIT\\\\Typo3CacheBags\\\\Database\\\\Query\\\\QueriedTableAwareQueryBuilder\\:\\:getQueriedTables\\(\\) should return array\\<non\\-empty\\-string, non\\-empty\\-string\\> but returns array\\<string\\>\\.$#"
+			count: 1
+			path: Classes/Database/Query/QueriedTableAwareQueryBuilder.php
