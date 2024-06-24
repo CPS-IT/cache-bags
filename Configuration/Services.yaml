@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  CPSIT\Typo3CacheBags\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Enum/*'
+      - '../Classes/Event/*'
+      - '../Classes/Exception/*'
+
+  CPSIT\Typo3CacheBags\EventListener\PageCacheBagRegisteredEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'cpsit/typo3-cache-bags/page-cache-bag-registered'
+
+  CPSIT\Typo3CacheBags\Hooks\PageCacheTimeoutHook:
+    public: true

@@ -1,0 +1,102 @@
+{
+	"name": "cpsit/typo3-cache-bags",
+	"description": "TYPO3 CMS extension to build and register cache bags for enhanced cache control",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "e.haeussler@familie-redlich.de",
+			"homepage": "https://www.cps-it.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+		"psr/event-dispatcher": "^1.0",
+		"typo3/cms-core": "~11.5.0 || ~12.4.0 || ~13.1.0",
+		"typo3/cms-extbase": "~11.5.0 || ~12.4.0 || ~13.1.0",
+		"typo3/cms-frontend": "~11.5.0 || ~12.4.0 || ~13.1.0"
+	},
+	"require-dev": {
+		"armin/editorconfig-cli": "^1.8 || ^2.0",
+		"ergebnis/composer-normalize": "^2.43",
+		"friendsofphp/php-cs-fixer": "^3.57",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan": "^1.11",
+		"phpstan/phpstan-phpunit": "^1.4",
+		"phpunit/phpcov": "^9.0 || ^10.0",
+		"phpunit/phpunit": "^10.1 || ^11.0",
+		"saschaegerer/phpstan-typo3": "^1.10",
+		"ssch/typo3-rector": "^2.6",
+		"typo3/coding-standards": "^0.7.0 || ^0.8.0",
+		"typo3/testing-framework": "^7.0.2 || ^8.0.9"
+	},
+	"autoload": {
+		"psr-4": {
+			"CPSIT\\Typo3CacheBags\\": "Classes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"CPSIT\\Typo3CacheBags\\Tests\\": "Tests/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"bin-dir": ".Build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".Build/vendor"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "cache_bags",
+			"web-dir": ".Build/web"
+		}
+	},
+	"scripts": {
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": "@composer normalize",
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec",
+		"lint:php": "@fix:php --dry-run",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process -c rector.php",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse -c phpstan.neon",
+		"test": [
+			"@test:functional",
+			"@test:unit"
+		],
+		"test:coverage": [
+			"@test:coverage:functional",
+			"@test:coverage:unit",
+			"@test:coverage:merge"
+		],
+		"test:coverage:functional": "phpunit -c phpunit.functional.xml",
+		"test:coverage:merge": "phpcov merge --html .Build/coverage/html/_merged --clover .Build/coverage/clover.xml --text php://stdout .Build/coverage/php",
+		"test:coverage:unit": "phpunit -c phpunit.unit.xml",
+		"test:functional": "@test:coverage:functional --no-coverage",
+		"test:unit": "@test:coverage:unit --no-coverage"
+	}
+}
