@@ -87,9 +87,9 @@ final class PageCacheBag implements CacheBag
     public function getCacheTags(): array
     {
         if ($this->tableName === Table::Pages->value) {
-            /** @var numeric-string $recordUid */
             $recordUid = (string)$this->recordUid;
 
+            /* @phpstan-ignore return.type */
             return [$recordUid];
         }
 
