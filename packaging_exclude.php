@@ -38,6 +38,7 @@ return [
         'CODE_OF_CONDUCT.md',
         'composer.lock',
         'CONTRIBUTING.md',
+        'dependency-checker.json',
         'editorconfig',
         'gitattributes',
         'gitignore',

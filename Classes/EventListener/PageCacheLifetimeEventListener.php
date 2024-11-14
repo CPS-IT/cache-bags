@@ -24,8 +24,9 @@ declare(strict_types=1);
 namespace CPSIT\Typo3CacheBags\EventListener;
 
 use CPSIT\Typo3CacheBags\Cache\Bag\CacheBagRegistry;
+use CPSIT\Typo3CacheBags\Cache\Expiration\CacheLifetimeCalculator;
 use CPSIT\Typo3CacheBags\Enum\CacheScope;
-use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Cache\CacheDataCollector;
 use TYPO3\CMS\Frontend\Event\ModifyCacheLifetimeForPageEvent;
 
 /**
@@ -33,23 +34,28 @@ use TYPO3\CMS\Frontend\Event\ModifyCacheLifetimeForPageEvent;
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
+ *
+ * @todo Remove once support for TYPO3 v11 and v12 is dropped
  */
 final class PageCacheLifetimeEventListener
 {
     public function __construct(
-        private readonly Context $context,
         private readonly CacheBagRegistry $cacheBagRegistry,
+        private readonly CacheLifetimeCalculator $cacheLifetimeCalculator,
     ) {}
 
     public function __invoke(ModifyCacheLifetimeForPageEvent $event): void
     {
+        // Lifetime modification for TYPO3 >= 13.4 is already done when cache bags are registered
+        if (class_exists(CacheDataCollector::class)) {
+            return;
+        }
+
         $expirationDate = $this->cacheBagRegistry->getExpirationDate(CacheScope::Pages);
-        /** @var non-negative-int $now */
-        $now = $this->context->getPropertyFromAspect('date', 'accessTime', 0);
 
         if ($expirationDate !== null) {
             $event->setCacheLifetime(
-                \max(0, $expirationDate->getTimestamp() - $now)
+                $this->cacheLifetimeCalculator->forExpirationDate($expirationDate),
             );
         }
     }

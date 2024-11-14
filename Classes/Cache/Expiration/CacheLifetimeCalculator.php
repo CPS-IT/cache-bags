@@ -21,39 +21,39 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace CPSIT\Typo3CacheBags\Helper;
+namespace CPSIT\Typo3CacheBags\Cache\Expiration;
 
-use CPSIT\Typo3CacheBags\Exception\FrontendIsNotInitialized;
-use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+use CPSIT\Typo3CacheBags\Cache\Bag\CacheBag;
+use TYPO3\CMS\Core\Context\Context;
 
 /**
- * FrontendHelper
+ * CacheLifetimeCalculator
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class FrontendHelper
+class CacheLifetimeCalculator
 {
-    public static function getTypoScriptFrontendController(): TypoScriptFrontendController
-    {
-        $typoScriptFrontendController = $GLOBALS['TSFE'] ?? null;
+    public function __construct(
+        protected readonly Context $context,
+    ) {}
 
-        if (!($typoScriptFrontendController instanceof TypoScriptFrontendController)) {
-            throw new FrontendIsNotInitialized();
+    public function forCacheBag(CacheBag $cacheBag): ?int
+    {
+        $expirationDate = $cacheBag->getExpirationDate();
+
+        if ($expirationDate !== null) {
+            return $this->forExpirationDate($expirationDate);
         }
 
-        return $typoScriptFrontendController;
+        return null;
     }
 
-    public static function getServerRequest(): ServerRequestInterface
+    public function forExpirationDate(\DateTimeInterface $expirationDate): int
     {
-        $serverRequest = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        /** @var non-negative-int $now */
+        $now = $this->context->getPropertyFromAspect('date', 'accessTime', 0);
 
-        if (!($serverRequest instanceof ServerRequestInterface)) {
-            throw new FrontendIsNotInitialized();
-        }
-
-        return $serverRequest;
+        return \max(0, $expirationDate->getTimestamp() - $now);
     }
 }
