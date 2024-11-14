@@ -30,6 +30,10 @@ use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\EndTimeRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\StartTimeRestriction;
 use TYPO3\CMS\Core\Database\RelationHandler;
+use TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability;
+use TYPO3\CMS\Core\Schema\TcaSchema;
+use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -164,10 +168,15 @@ class CacheExpirationCalculator
 
     /**
      * @param non-empty-string $tableName
-     * @return array<value-of<EnableField>, non-empty-string|null>
+     * @return array<value-of<EnableField>, string|null>
      */
     protected function getConfiguredEnableFields(string $tableName): array
     {
+        if (\class_exists(TcaSchema::class)) {
+            return $this->getConfiguredEnableFieldsFromTcaSchema($tableName);
+        }
+
+        // @todo Remove once support for TYPO3 v11 and v12 is dropped
         $configuration = $GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns'] ?? [];
         $enableFields = [
             EnableField::StartTime->value,
@@ -175,6 +184,32 @@ class CacheExpirationCalculator
         ];
 
         return array_intersect_key($configuration, array_flip($enableFields));
+    }
+
+    /**
+     * @param non-empty-string $tableName
+     * @return array<value-of<EnableField>, string|null>
+     */
+    protected function getConfiguredEnableFieldsFromTcaSchema(string $tableName): array
+    {
+        // @todo Use DI once support for TYPO3 v11 and v12 is dropped
+        $tcaSchemaFactory = GeneralUtility::makeInstance(TcaSchemaFactory::class);
+
+        // Early return if schema does not exist
+        if (!$tcaSchemaFactory->has($tableName)) {
+            return [];
+        }
+
+        $tcaSchema = $tcaSchemaFactory->get($tableName);
+        $capabilities = [
+            EnableField::StartTime->value => TcaSchemaCapability::RestrictionStartTime,
+            EnableField::EndTime->value => TcaSchemaCapability::RestrictionEndTime,
+        ];
+
+        return \array_map(
+            static fn(TcaSchemaCapability $capability) => $tcaSchema->hasCapability($capability) ? $tcaSchema->getCapability($capability)->getFieldName() : null,
+            $capabilities,
+        );
     }
 
     protected function calculateExpirationDate(

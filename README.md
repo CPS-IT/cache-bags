@@ -36,7 +36,7 @@ database contents or short-living API requests.
 * Cache bag registry to handle generated cache bags
 * Cache expiration calculator for various use cases (query builder, query result etc.)
 * Event listener to override page cache expiration, based on registered page cache bags
-* Compatible with TYPO3 11.5 LTS, 12.4 LTS and 13.1
+* Compatible with TYPO3 11.5 LTS, 12.4 LTS and 13.4 LTS
 
 ## 🔥 Installation
 

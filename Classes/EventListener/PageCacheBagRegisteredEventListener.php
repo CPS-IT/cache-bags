@@ -23,9 +23,13 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3CacheBags\EventListener;
 
+use CPSIT\Typo3CacheBags\Cache\Bag\CacheBag;
+use CPSIT\Typo3CacheBags\Cache\Expiration\CacheLifetimeCalculator;
 use CPSIT\Typo3CacheBags\Enum\CacheScope;
 use CPSIT\Typo3CacheBags\Event\CacheBagRegisteredEvent;
 use CPSIT\Typo3CacheBags\Helper\FrontendHelper;
+use TYPO3\CMS\Core\Cache\CacheDataCollector;
+use TYPO3\CMS\Core\Cache\CacheTag;
 
 /**
  * PageCacheBagRegisteredEventListener
@@ -35,10 +39,39 @@ use CPSIT\Typo3CacheBags\Helper\FrontendHelper;
  */
 final class PageCacheBagRegisteredEventListener
 {
+    public function __construct(
+        private readonly CacheLifetimeCalculator $cacheLifetimeCalculator,
+    ) {}
+
     public function __invoke(CacheBagRegisteredEvent $event): void
     {
         if ($event->cacheBag->getScope() === CacheScope::Pages) {
-            FrontendHelper::getTypoScriptFrontendController()->addCacheTags($event->cacheBag->getCacheTags());
+            $this->addCacheTags($event->cacheBag);
         }
+    }
+
+    private function addCacheTags(CacheBag $cacheBag): void
+    {
+        if (\class_exists(CacheDataCollector::class)) {
+            /** @var CacheDataCollector $cacheDataCollector */
+            $cacheDataCollector = FrontendHelper::getServerRequest()->getAttribute('frontend.cache.collector');
+            $cacheDataCollector->addCacheTags(...$this->convertCacheTagsToObjects($cacheBag));
+        } else {
+            // @todo Remove once support for TYPO3 v11 and v12 is dropped
+            FrontendHelper::getTypoScriptFrontendController()->addCacheTags($cacheBag->getCacheTags());
+        }
+    }
+
+    /**
+     * @return list<CacheTag>
+     */
+    private function convertCacheTagsToObjects(CacheBag $cacheBag): array
+    {
+        $lifetime = $this->cacheLifetimeCalculator->forCacheBag($cacheBag) ?? PHP_INT_MAX;
+
+        return \array_map(
+            static fn(string $cacheTag) => new CacheTag($cacheTag, $lifetime),
+            $cacheBag->getCacheTags(),
+        );
     }
 }
