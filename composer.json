@@ -29,7 +29,7 @@
 		"phpunit/phpcov": "^9.0 || ^10.0",
 		"phpunit/phpunit": "^10.1 || ^11.0",
 		"saschaegerer/phpstan-typo3": "^1.10",
-		"ssch/typo3-rector": "^2.6",
+		"ssch/typo3-rector": "^2.6 || ^3.0",
 		"typo3/coding-standards": "^0.7.0 || ^0.8.0",
 		"typo3/testing-framework": "^7.0.2 || ^8.0.9 || ^9.0.1"
 	},
