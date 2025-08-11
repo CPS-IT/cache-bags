@@ -1,9 +1,0 @@
-{
-	"symbol-whitelist": [
-		"TYPO3\\CMS\\Core\\Cache\\CacheDataCollector",
-		"TYPO3\\CMS\\Core\\Cache\\CacheTag",
-		"TYPO3\\CMS\\Core\\Schema\\Capability\\TcaSchemaCapability",
-		"TYPO3\\CMS\\Core\\Schema\\TcaSchema",
-		"TYPO3\\CMS\\Core\\Schema\\TcaSchemaFactory"
-	]
-}

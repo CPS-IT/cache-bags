@@ -27,10 +27,15 @@ use Rector\ValueObject\PhpVersion;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
+    $rootPath = dirname(__DIR__, 2);
+
     $rectorConfig->paths([
-        __DIR__ . '/Classes',
-        __DIR__ . '/Configuration',
-        __DIR__ . '/Tests',
+        $rootPath . '/Classes',
+        $rootPath . '/Configuration',
+        $rootPath . '/Tests',
+    ]);
+    $rectorConfig->skip([
+        $rootPath . '/Tests/CGL',
     ]);
 
     $rectorConfig->phpVersion(PhpVersion::PHP_81);

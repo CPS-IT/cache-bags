@@ -91,11 +91,11 @@ class CacheExpirationCalculator
     /**
      * @template T of AbstractEntity
      * @param non-empty-string $tableName
-     * @param QueryResultInterface<T> $queryResult
+     * @param QueryResultInterface<int, T> $queryResult
      */
     public function forQueryResult(string $tableName, QueryResultInterface $queryResult): ?\DateTimeInterface
     {
-        return self::forQuery($tableName, $queryResult->getQuery());
+        return $this->forQuery($tableName, $queryResult->getQuery());
     }
 
     /**
@@ -149,10 +149,15 @@ class CacheExpirationCalculator
     {
         $expirationDate = null;
 
-        /** @var non-empty-string $table */
+        /**
+         * @var non-empty-string $table
+         * @var list<array<string, mixed>> $rows
+         */
         foreach ((clone $relationHandler)->getFromDB() as $table => $rows) {
             $enableFields = $this->getConfiguredEnableFields($table);
+            /** @var int|null $startTimeField */
             $startTimeField = $enableFields[EnableField::StartTime->value] ?? null;
+            /** @var int|null $endTimeField */
             $endTimeField = $enableFields[EnableField::EndTime->value] ?? null;
 
             foreach ($rows as $row) {
