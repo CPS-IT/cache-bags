@@ -15,9 +15,6 @@
 			"extends": [
 				":pinVersions"
 			],
-			"constraints": {
-				"php": "8.4.*"
-			},
 			"matchFileNames": [
 				"Tests/CGL/composer.json"
 			]
