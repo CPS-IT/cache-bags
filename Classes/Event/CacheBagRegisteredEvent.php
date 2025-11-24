@@ -25,9 +25,9 @@ use CPSIT\Typo3CacheBags\Cache\Bag\CacheBag;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class CacheBagRegisteredEvent
+final readonly class CacheBagRegisteredEvent
 {
     public function __construct(
-        public readonly CacheBag $cacheBag,
+        public CacheBag $cacheBag,
     ) {}
 }
