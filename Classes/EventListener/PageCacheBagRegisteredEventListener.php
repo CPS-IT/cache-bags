@@ -31,10 +31,10 @@ use TYPO3\CMS\Core\Cache\CacheTag;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class PageCacheBagRegisteredEventListener
+final readonly class PageCacheBagRegisteredEventListener
 {
     public function __construct(
-        private readonly CacheLifetimeCalculator $cacheLifetimeCalculator,
+        private CacheLifetimeCalculator $cacheLifetimeCalculator,
     ) {}
 
     public function __invoke(CacheBagRegisteredEvent $event): void

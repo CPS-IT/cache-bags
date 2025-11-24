@@ -31,11 +31,11 @@ use TYPO3\CMS\Frontend\Event\ModifyCacheLifetimeForPageEvent;
  *
  * @todo Remove once support for TYPO3 v12 is dropped
  */
-final class PageCacheLifetimeEventListener
+final readonly class PageCacheLifetimeEventListener
 {
     public function __construct(
-        private readonly CacheBagRegistry $cacheBagRegistry,
-        private readonly CacheLifetimeCalculator $cacheLifetimeCalculator,
+        private CacheBagRegistry $cacheBagRegistry,
+        private CacheLifetimeCalculator $cacheLifetimeCalculator,
     ) {}
 
     public function __invoke(ModifyCacheLifetimeForPageEvent $event): void
