@@ -1,157 +1,133 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Access to constant RestrictionEndTime on an unknown class TYPO3\\CMS\\Core\\Schema\\Capability\\TcaSchemaCapability\.$#'
+			rawMessage: Access to constant RestrictionEndTime on an unknown class TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Access to constant RestrictionStartTime on an unknown class TYPO3\\CMS\\Core\\Schema\\Capability\\TcaSchemaCapability\.$#'
+			rawMessage: Access to constant RestrictionStartTime on an unknown class TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Call to method get\(\) on an unknown class TYPO3\\CMS\\Core\\Schema\\TcaSchemaFactory\.$#'
+			rawMessage: 'Call to method get() on an unknown class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Call to method has\(\) on an unknown class TYPO3\\CMS\\Core\\Schema\\TcaSchemaFactory\.$#'
+			rawMessage: 'Call to method has() on an unknown class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Call to static method getProperty\(\) of internal class TYPO3\\CMS\\Extbase\\Reflection\\ObjectAccess from outside its root namespace TYPO3\.$#'
+			rawMessage: 'Call to static method getProperty() of internal class TYPO3\CMS\Extbase\Reflection\ObjectAccess from outside its root namespace TYPO3.'
 			identifier: staticMethod.internalClass
 			count: 2
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot access offset ''ctrl'' on mixed\.$#'
+			rawMessage: Cannot access offset 'ctrl' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot access offset ''enablecolumns'' on mixed\.$#'
+			rawMessage: Cannot access offset 'enablecolumns' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot access offset non\-empty\-string on mixed\.$#'
+			rawMessage: Cannot access offset non-empty-string on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot call method getCapability\(\) on mixed\.$#'
+			rawMessage: 'Cannot call method getCapability() on mixed.'
 			identifier: method.nonObject
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot call method getFieldName\(\) on mixed\.$#'
+			rawMessage: 'Cannot call method getFieldName() on mixed.'
 			identifier: method.nonObject
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Cannot call method hasCapability\(\) on mixed\.$#'
+			rawMessage: 'Cannot call method hasCapability() on mixed.'
 			identifier: method.nonObject
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Class TYPO3\\CMS\\Core\\Schema\\TcaSchemaFactory not found\.$#'
+			rawMessage: Class TYPO3\CMS\Core\Schema\TcaSchemaFactory not found.
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Method CPSIT\\Typo3CacheBags\\Cache\\Expiration\\CacheExpirationCalculator\:\:getConfiguredEnableFields\(\) should return array\<''endtime''\|''starttime'', string\|null\> but returns array\<mixed, mixed\>\.$#'
+			rawMessage: 'Method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::getConfiguredEnableFields() should return array<''endtime''|''starttime'', string|null> but returns array<mixed, mixed>.'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Method CPSIT\\Typo3CacheBags\\Cache\\Expiration\\CacheExpirationCalculator\:\:getConfiguredEnableFieldsFromTcaSchema\(\) should return array\<''endtime''\|''starttime'', string\|null\> but returns array\{starttime\: mixed, endtime\: mixed\}\.$#'
+			rawMessage: 'Method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::getConfiguredEnableFieldsFromTcaSchema() should return array<''endtime''|''starttime'', string|null> but returns array{starttime: mixed, endtime: mixed}.'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Parameter \#1 \$array of function array_intersect_key expects array, mixed given\.$#'
+			rawMessage: 'Parameter #1 $array of function array_intersect_key expects array, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(mixed\)\: mixed\)\|null, Closure\(TYPO3\\CMS\\Core\\Schema\\Capability\\TcaSchemaCapability\)\: mixed given\.$#'
+			rawMessage: 'Parameter #1 $callback of function array_map expects (callable(mixed): mixed)|null, Closure(TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability): mixed given.'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Parameter \#1 \$startTime of method CPSIT\\Typo3CacheBags\\Cache\\Expiration\\CacheExpirationCalculator\:\:calculateExpirationDate\(\) expects DateTimeInterface\|int\|null, mixed given\.$#'
+			rawMessage: 'Parameter #1 $startTime of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::calculateExpirationDate() expects DateTimeInterface|int|null, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Parameter \#2 \$endTime of method CPSIT\\Typo3CacheBags\\Cache\\Expiration\\CacheExpirationCalculator\:\:calculateExpirationDate\(\) expects DateTimeInterface\|int\|null, mixed given\.$#'
+			rawMessage: 'Parameter #2 $endTime of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::calculateExpirationDate() expects DateTimeInterface|int|null, mixed given.'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Parameter \$capability of anonymous function has invalid type TYPO3\\CMS\\Core\\Schema\\Capability\\TcaSchemaCapability\.$#'
+			rawMessage: Parameter $capability of anonymous function has invalid type TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			message: '#^Method CPSIT\\Typo3CacheBags\\Database\\Query\\QueriedTableAwareQueryBuilder\:\:getQueriedTables\(\) should return array\<non\-empty\-string, non\-empty\-string\> but returns array\<string\>\.$#'
+			rawMessage: 'Method CPSIT\Typo3CacheBags\Database\Query\QueriedTableAwareQueryBuilder::getQueriedTables() should return array<non-empty-string, non-empty-string> but returns array<string>.'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Database/Query/QueriedTableAwareQueryBuilder.php
 
 		-
-			message: '#^Instantiated class TYPO3\\CMS\\Core\\Cache\\CacheTag not found\.$#'
+			rawMessage: Instantiated class TYPO3\CMS\Core\Cache\CacheTag not found.
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/EventListener/PageCacheBagRegisteredEventListener.php
 
 		-
-			message: '#^Method CPSIT\\Typo3CacheBags\\EventListener\\PageCacheBagRegisteredEventListener\:\:convertCacheTagsToObjects\(\) has invalid return type TYPO3\\CMS\\Core\\Cache\\CacheTag\.$#'
+			rawMessage: 'Method CPSIT\Typo3CacheBags\EventListener\PageCacheBagRegisteredEventListener::convertCacheTagsToObjects() has invalid return type TYPO3\CMS\Core\Cache\CacheTag.'
 			identifier: class.notFound
 			count: 1
 			path: ../../Classes/EventListener/PageCacheBagRegisteredEventListener.php
-
-		-
-			message: '#^Cannot access an offset on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Extension.php
-
-		-
-			message: '#^Cannot access offset ''SC_OPTIONS'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Extension.php
-
-		-
-			message: '#^Cannot access offset ''get_cache_timeout'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Extension.php
-
-		-
-			message: '#^Cannot access offset ''tslib/class\.tslib_fe\.php'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Extension.php

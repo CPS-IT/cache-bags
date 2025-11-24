@@ -29,7 +29,7 @@ use TYPO3\CMS\Frontend\Event\ModifyCacheLifetimeForPageEvent;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  *
- * @todo Remove once support for TYPO3 v11 and v12 is dropped
+ * @todo Remove once support for TYPO3 v12 is dropped
  */
 final class PageCacheLifetimeEventListener
 {

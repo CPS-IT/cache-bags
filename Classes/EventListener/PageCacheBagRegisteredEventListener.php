@@ -51,7 +51,7 @@ final class PageCacheBagRegisteredEventListener
             $cacheDataCollector = FrontendHelper::getServerRequest()->getAttribute('frontend.cache.collector');
             $cacheDataCollector->addCacheTags(...$this->convertCacheTagsToObjects($cacheBag));
         } else {
-            // @todo Remove once support for TYPO3 v11 and v12 is dropped
+            // @todo Remove once support for TYPO3 v12 is dropped
             FrontendHelper::getTypoScriptFrontendController()->addCacheTags($cacheBag->getCacheTags());
         }
     }
