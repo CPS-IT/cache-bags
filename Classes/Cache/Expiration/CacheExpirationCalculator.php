@@ -126,10 +126,19 @@ class CacheExpirationCalculator
 
         while ($row = $statement->fetchAssociative()) {
             foreach ($queriedFields as [EnableField::StartTime->value => $startTimeField, EnableField::EndTime->value => $endTimeField]) {
-                /** @var int|null $startTime */
-                $startTime = $row[$startTimeField] ?? null;
-                /** @var int|null $endTime */
-                $endTime = $row[$endTimeField] ?? null;
+                if ($startTimeField !== null) {
+                    /** @var int|null $startTime */
+                    $startTime = $row[$startTimeField] ?? null;
+                } else {
+                    $startTime = null;
+                }
+
+                if ($endTimeField !== null) {
+                    /** @var int|null $endTime */
+                    $endTime = $row[$endTimeField] ?? null;
+                } else {
+                    $endTime = null;
+                }
 
                 $this->calculateExpirationDate($startTime, $endTime, $expirationDate);
             }
@@ -148,14 +157,23 @@ class CacheExpirationCalculator
          */
         foreach ((clone $relationHandler)->getFromDB() as $table => $rows) {
             $enableFields = $this->getConfiguredEnableFields($table);
-            /** @var int|null $startTimeField */
+            /** @var string|null $startTimeField */
             $startTimeField = $enableFields[EnableField::StartTime->value] ?? null;
-            /** @var int|null $endTimeField */
+            /** @var string|null $endTimeField */
             $endTimeField = $enableFields[EnableField::EndTime->value] ?? null;
 
             foreach ($rows as $row) {
-                $startTime = $row[$startTimeField] ?? null;
-                $endTime = $row[$endTimeField] ?? null;
+                if ($startTimeField !== null) {
+                    $startTime = $row[$startTimeField] ?? null;
+                } else {
+                    $startTime = null;
+                }
+
+                if ($endTimeField !== null) {
+                    $endTime = $row[$endTimeField] ?? null;
+                } else {
+                    $endTime = null;
+                }
 
                 $this->calculateExpirationDate($startTime, $endTime, $expirationDate);
             }
