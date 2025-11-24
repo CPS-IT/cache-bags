@@ -18,6 +18,19 @@
 			"matchFileNames": [
 				"Tests/CGL/composer.json"
 			]
+		},
+		{
+			"enabled": false,
+			"matchCurrentVersion": "8.2",
+			"matchDatasources": [
+				"github-tags"
+			],
+			"matchDepNames": [
+				"php"
+			],
+			"matchFileNames": [
+				".github/workflows/cgl.yaml"
+			]
 		}
 	]
 }
