@@ -17,9 +17,6 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3CacheBags;
 
-use CPSIT\Typo3CacheBags\Hooks\PageCacheTimeoutHook;
-use TYPO3\CMS\Core\Information\Typo3Version;
-
 /**
  * Extension
  *
@@ -30,17 +27,4 @@ final class Extension
 {
     public const KEY = 'cache_bags';
 
-    /**
-     * Register hooks.
-     *
-     * FOR USE IN ext_localconf.php ONLY.
-     */
-    public static function registerHooks(): void
-    {
-        // @todo Remove once support for TYPO3 v11 is dropped
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['get_cache_timeout'][]
-                = PageCacheTimeoutHook::class . '->determinePageCacheTimeout';
-        }
-    }
 }

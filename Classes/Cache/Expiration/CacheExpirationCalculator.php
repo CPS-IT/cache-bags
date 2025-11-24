@@ -175,7 +175,7 @@ class CacheExpirationCalculator
             return $this->getConfiguredEnableFieldsFromTcaSchema($tableName);
         }
 
-        // @todo Remove once support for TYPO3 v11 and v12 is dropped
+        // @todo Remove once support for TYPO3 v12 is dropped
         $configuration = $GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns'] ?? [];
         $enableFields = [
             EnableField::StartTime->value,
@@ -191,7 +191,7 @@ class CacheExpirationCalculator
      */
     protected function getConfiguredEnableFieldsFromTcaSchema(string $tableName): array
     {
-        // @todo Use DI once support for TYPO3 v11 and v12 is dropped
+        // @todo Use DI once support for TYPO3 v12 is dropped
         $tcaSchemaFactory = GeneralUtility::makeInstance(TcaSchemaFactory::class);
 
         // Early return if schema does not exist

@@ -10,8 +10,6 @@ services:
       - '../Classes/Database/*'
       - '../Classes/Enum/*'
       - '../Classes/Event/*'
-      # @todo Remove once support for TYPO3 v11 is dropped
-      - '../Classes/EventListener/PageCacheLifetimeEventListener.php'
       - '../Classes/Exception/*'
 
   CPSIT\Typo3CacheBags\EventListener\PageCacheBagRegisteredEventListener:
@@ -19,12 +17,7 @@ services:
       - name: event.listener
         identifier: 'cpsit/typo3-cache-bags/page-cache-bag-registered'
 
-  # @todo Enable once support for TYPO3 v11 is dropped
-  # CPSIT\Typo3CacheBags\EventListener\PageCacheLifetimeEventListener:
-  #   tags:
-  #     - name: event.listener
-  #       identifier: 'cpsit/typo3-cache-bags/page-cache-lifetime'
-
-  # @todo Remove once support for TYPO3 v11 is dropped
-  CPSIT\Typo3CacheBags\Hooks\PageCacheTimeoutHook:
-    public: true
+  CPSIT\Typo3CacheBags\EventListener\PageCacheLifetimeEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'cpsit/typo3-cache-bags/page-cache-lifetime'
