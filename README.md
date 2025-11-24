@@ -5,7 +5,6 @@
 # TYPO3 extension `cache_bags`
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/CPS-IT/cache-bags?logo=coveralls)](https://coveralls.io/github/CPS-IT/cache-bags)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/CPS-IT/cache-bags?logo=codeclimate)](https://codeclimate.com/github/CPS-IT/cache-bags/maintainability)
 [![CGL](https://github.com/CPS-IT/cache-bags/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/cache-bags/actions/workflows/cgl.yaml)
 [![Release](https://github.com/CPS-IT/cache-bags/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/cache-bags/actions/workflows/release.yaml)
 [![License](http://poser.pugx.org/cpsit/typo3-cache-bags/license)](LICENSE.md)\
