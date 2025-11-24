@@ -1,26 +1,50 @@
 parameters:
 	ignoreErrors:
 		-
-			rawMessage: Access to constant RestrictionEndTime on an unknown class TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
-			identifier: class.notFound
+			rawMessage: 'Call to method getId() of internal class TYPO3\CMS\Frontend\Page\PageInformation from outside its root namespace TYPO3.'
+			identifier: method.internalClass
+			count: 1
+			path: ../../Classes/Cache/Bag/PageCacheBag.php
+
+		-
+			rawMessage: Access to constant RestrictionEndTime of internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability from outside its root namespace TYPO3.
+			identifier: classConstant.internalEnum
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			rawMessage: Access to constant RestrictionStartTime on an unknown class TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
-			identifier: class.notFound
+			rawMessage: Access to constant RestrictionStartTime of internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability from outside its root namespace TYPO3.
+			identifier: classConstant.internalEnum
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			rawMessage: 'Call to method get() on an unknown class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
-			identifier: class.notFound
+			rawMessage: 'Call to method get() of internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory from outside its root namespace TYPO3.'
+			identifier: method.internalClass
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			rawMessage: 'Call to method has() on an unknown class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
-			identifier: class.notFound
+			rawMessage: 'Call to method getCapability() of internal class TYPO3\CMS\Core\Schema\TcaSchema from outside its root namespace TYPO3.'
+			identifier: method.internalClass
+			count: 1
+			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+
+		-
+			rawMessage: 'Call to method getFieldName() of internal class TYPO3\CMS\Core\Schema\Capability\FieldCapability from outside its root namespace TYPO3.'
+			identifier: method.internalClass
+			count: 1
+			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+
+		-
+			rawMessage: 'Call to method has() of internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory from outside its root namespace TYPO3.'
+			identifier: method.internalClass
+			count: 1
+			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+
+		-
+			rawMessage: 'Call to method hasCapability() of internal class TYPO3\CMS\Core\Schema\TcaSchema from outside its root namespace TYPO3.'
+			identifier: method.internalClass
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
@@ -28,72 +52,6 @@ parameters:
 			rawMessage: 'Call to static method getProperty() of internal class TYPO3\CMS\Extbase\Reflection\ObjectAccess from outside its root namespace TYPO3.'
 			identifier: staticMethod.internalClass
 			count: 2
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: Cannot access offset 'ctrl' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: Cannot access offset 'enablecolumns' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: Cannot access offset non-empty-string on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Cannot call method getCapability() on mixed.'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Cannot call method getFieldName() on mixed.'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Cannot call method hasCapability() on mixed.'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: Class TYPO3\CMS\Core\Schema\TcaSchemaFactory not found.
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::getConfiguredEnableFields() should return array<''endtime''|''starttime'', string|null> but returns array<mixed, mixed>.'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::getConfiguredEnableFieldsFromTcaSchema() should return array<''endtime''|''starttime'', string|null> but returns array{starttime: mixed, endtime: mixed}.'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Parameter #1 $array of function array_intersect_key expects array, mixed given.'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
-
-		-
-			rawMessage: 'Parameter #1 $callback of function array_map expects (callable(mixed): mixed)|null, Closure(TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability): mixed given.'
-			identifier: argument.type
-			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
@@ -109,25 +67,25 @@ parameters:
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			rawMessage: Parameter $capability of anonymous function has invalid type TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
-			identifier: class.notFound
+			rawMessage: Parameter $capability of anonymous function has typehint with internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
+			identifier: parameter.internalEnum
 			count: 1
 			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
-			rawMessage: 'Method CPSIT\Typo3CacheBags\Database\Query\QueriedTableAwareQueryBuilder::getQueriedTables() should return array<non-empty-string, non-empty-string> but returns array<string>.'
-			identifier: return.type
+			rawMessage: 'Parameter $schemaFactory of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::__construct() has typehint with internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
+			identifier: parameter.internalClass
+			count: 1
+			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+
+		-
+			rawMessage: Property $schemaFactory references internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory in its type.
+			identifier: property.internalClass
+			count: 1
+			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+
+		-
+			rawMessage: Access to property $connection of internal class TYPO3\CMS\Core\Database\Query\ConcreteQueryBuilder from outside its root namespace TYPO3.
+			identifier: property.internalClass
 			count: 1
 			path: ../../Classes/Database/Query/QueriedTableAwareQueryBuilder.php
-
-		-
-			rawMessage: Instantiated class TYPO3\CMS\Core\Cache\CacheTag not found.
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/EventListener/PageCacheBagRegisteredEventListener.php
-
-		-
-			rawMessage: 'Method CPSIT\Typo3CacheBags\EventListener\PageCacheBagRegisteredEventListener::convertCacheTagsToObjects() has invalid return type TYPO3\CMS\Core\Cache\CacheTag.'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/EventListener/PageCacheBagRegisteredEventListener.php

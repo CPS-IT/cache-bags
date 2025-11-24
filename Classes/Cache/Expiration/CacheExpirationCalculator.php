@@ -25,9 +25,7 @@ use TYPO3\CMS\Core\Database\Query\Restriction\EndTimeRestriction;
 use TYPO3\CMS\Core\Database\Query\Restriction\StartTimeRestriction;
 use TYPO3\CMS\Core\Database\RelationHandler;
 use TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability;
-use TYPO3\CMS\Core\Schema\TcaSchema;
 use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -43,6 +41,7 @@ class CacheExpirationCalculator
 {
     public function __construct(
         protected readonly Context $context,
+        protected readonly TcaSchemaFactory $schemaFactory,
     ) {}
 
     /**
@@ -171,35 +170,12 @@ class CacheExpirationCalculator
      */
     protected function getConfiguredEnableFields(string $tableName): array
     {
-        if (\class_exists(TcaSchema::class)) {
-            return $this->getConfiguredEnableFieldsFromTcaSchema($tableName);
-        }
-
-        // @todo Remove once support for TYPO3 v12 is dropped
-        $configuration = $GLOBALS['TCA'][$tableName]['ctrl']['enablecolumns'] ?? [];
-        $enableFields = [
-            EnableField::StartTime->value,
-            EnableField::EndTime->value,
-        ];
-
-        return array_intersect_key($configuration, array_flip($enableFields));
-    }
-
-    /**
-     * @param non-empty-string $tableName
-     * @return array<value-of<EnableField>, string|null>
-     */
-    protected function getConfiguredEnableFieldsFromTcaSchema(string $tableName): array
-    {
-        // @todo Use DI once support for TYPO3 v12 is dropped
-        $tcaSchemaFactory = GeneralUtility::makeInstance(TcaSchemaFactory::class);
-
         // Early return if schema does not exist
-        if (!$tcaSchemaFactory->has($tableName)) {
+        if (!$this->schemaFactory->has($tableName)) {
             return [];
         }
 
-        $tcaSchema = $tcaSchemaFactory->get($tableName);
+        $tcaSchema = $this->schemaFactory->get($tableName);
         $capabilities = [
             EnableField::StartTime->value => TcaSchemaCapability::RestrictionStartTime,
             EnableField::EndTime->value => TcaSchemaCapability::RestrictionEndTime,

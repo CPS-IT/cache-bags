@@ -19,6 +19,7 @@ namespace CPSIT\Typo3CacheBags\Cache\Bag;
 
 use CPSIT\Typo3CacheBags\Enum\CacheScope;
 use CPSIT\Typo3CacheBags\Enum\Table;
+use CPSIT\Typo3CacheBags\Exception\CannotDiscoverPageInformation;
 use CPSIT\Typo3CacheBags\Exception\PageIdIsMissing;
 use CPSIT\Typo3CacheBags\Helper\FrontendHelper;
 
@@ -48,10 +49,14 @@ final class PageCacheBag implements CacheBag
         return new self(Table::Pages->value, $pageId, $expirationDate);
     }
 
+    /**
+     * @throws CannotDiscoverPageInformation
+     */
     public static function forCurrentPage(?\DateTimeInterface $expirationDate = null): self
     {
         /** @var positive-int $pageId */
-        $pageId = FrontendHelper::getTypoScriptFrontendController()->id;
+        $pageId = FrontendHelper::getServerRequest()->getAttribute('frontend.page.information')?->getId()
+            ?? throw new CannotDiscoverPageInformation();
 
         return self::forPage($pageId, $expirationDate);
     }
