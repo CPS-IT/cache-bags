@@ -22,6 +22,7 @@ use CPSIT\Typo3CacheBags\Cache\Expiration\CacheLifetimeCalculator;
 use CPSIT\Typo3CacheBags\Enum\CacheScope;
 use CPSIT\Typo3CacheBags\Event\CacheBagRegisteredEvent;
 use CPSIT\Typo3CacheBags\Helper\FrontendHelper;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Cache\CacheDataCollector;
 use TYPO3\CMS\Core\Cache\CacheTag;
 
@@ -31,6 +32,7 @@ use TYPO3\CMS\Core\Cache\CacheTag;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
+#[AsEventListener('cpsit/typo3-cache-bags/page-cache-bag-registered')]
 final readonly class PageCacheBagRegisteredEventListener
 {
     public function __construct(
@@ -46,14 +48,9 @@ final readonly class PageCacheBagRegisteredEventListener
 
     private function addCacheTags(CacheBag $cacheBag): void
     {
-        if (\class_exists(CacheDataCollector::class)) {
-            /** @var CacheDataCollector $cacheDataCollector */
-            $cacheDataCollector = FrontendHelper::getServerRequest()->getAttribute('frontend.cache.collector');
-            $cacheDataCollector->addCacheTags(...$this->convertCacheTagsToObjects($cacheBag));
-        } else {
-            // @todo Remove once support for TYPO3 v12 is dropped
-            FrontendHelper::getTypoScriptFrontendController()->addCacheTags($cacheBag->getCacheTags());
-        }
+        /** @var CacheDataCollector $cacheDataCollector */
+        $cacheDataCollector = FrontendHelper::getServerRequest()->getAttribute('frontend.cache.collector');
+        $cacheDataCollector->addCacheTags(...$this->convertCacheTagsToObjects($cacheBag));
     }
 
     /**

@@ -27,14 +27,6 @@ $configuration
     ->addPathsToExclude([
         $rootPath . '/Tests/CGL',
     ])
-    ->ignoreUnknownClasses([
-        // @todo Remove once support for TYPO3 v12 is dropped
-        \TYPO3\CMS\Core\Cache\CacheDataCollector::class,
-        \TYPO3\CMS\Core\Cache\CacheTag::class,
-        \TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability::class,
-        \TYPO3\CMS\Core\Schema\TcaSchema::class,
-        \TYPO3\CMS\Core\Schema\TcaSchemaFactory::class,
-    ])
 ;
 
 return $configuration;

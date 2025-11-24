@@ -15,27 +15,21 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace CPSIT\Typo3CacheBags\Helper;
-
-use CPSIT\Typo3CacheBags\Exception\FrontendIsNotInitialized;
-use Psr\Http\Message\ServerRequestInterface;
+namespace CPSIT\Typo3CacheBags\Exception;
 
 /**
- * FrontendHelper
+ * CannotDiscoverPageInformation
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class FrontendHelper
+final class CannotDiscoverPageInformation extends Exception
 {
-    public static function getServerRequest(): ServerRequestInterface
+    public function __construct()
     {
-        $serverRequest = $GLOBALS['TYPO3_REQUEST'] ?? null;
-
-        if (!($serverRequest instanceof ServerRequestInterface)) {
-            throw new FrontendIsNotInitialized();
-        }
-
-        return $serverRequest;
+        parent::__construct(
+            'Unable to discover current page information from request object.',
+            1763969848,
+        );
     }
 }
