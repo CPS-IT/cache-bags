@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			rawMessage: 'Call to method getId() of internal class TYPO3\CMS\Frontend\Page\PageInformation from outside its root namespace TYPO3.'
-			identifier: method.internalClass
-			count: 1
-			path: ../../Classes/Cache/Bag/PageCacheBag.php
-
-		-
 			rawMessage: Access to constant RestrictionEndTime of internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability from outside its root namespace TYPO3.
 			identifier: classConstant.internalEnum
 			count: 1
