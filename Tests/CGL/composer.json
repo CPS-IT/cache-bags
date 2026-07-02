@@ -8,7 +8,7 @@
 		"phpstan/phpstan-phpunit": "2.0.17",
 		"saschaegerer/phpstan-typo3": "3.0.1",
 		"shipmonk/composer-dependency-analyser": "1.8.4",
-		"ssch/typo3-rector": "3.14.2",
+		"ssch/typo3-rector": "3.14.3",
 		"typo3/coding-standards": "0.8.0"
 	},
 	"provide": {
