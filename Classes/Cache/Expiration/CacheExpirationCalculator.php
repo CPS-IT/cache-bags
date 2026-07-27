@@ -60,18 +60,18 @@ class CacheExpirationCalculator
         $modifiedQuery = clone $query;
         $querySettings = clone $modifiedQuery->getQuerySettings();
         $querySettings->setIgnoreEnableFields(true);
-        $querySettings->setEnableFieldsToBeIgnored(\array_keys($enableFields));
+        $querySettings->setEnableFieldsToBeIgnored(array_keys($enableFields));
         $modifiedQuery->setQuerySettings($querySettings);
 
         foreach ($modifiedQuery->execute() as $item) {
             $startTime = $startTimeField !== null ? ObjectAccess::getProperty($item, $startTimeField) : null;
             $endTime = $endTimeField !== null ? ObjectAccess::getProperty($item, $endTimeField) : null;
 
-            if ($startTime !== null && !\is_int($startTime) && !($startTime instanceof \DateTimeInterface)) {
+            if ($startTime !== null && !is_int($startTime) && !($startTime instanceof \DateTimeInterface)) {
                 $startTime = null;
             }
 
-            if ($endTime !== null && !\is_int($endTime) && !($endTime instanceof \DateTimeInterface)) {
+            if ($endTime !== null && !is_int($endTime) && !($endTime instanceof \DateTimeInterface)) {
                 $endTime = null;
             }
 
@@ -199,7 +199,7 @@ class CacheExpirationCalculator
             EnableField::EndTime->value => TcaSchemaCapability::RestrictionEndTime,
         ];
 
-        return \array_map(
+        return array_map(
             static fn(TcaSchemaCapability $capability) => $tcaSchema->hasCapability($capability) ? $tcaSchema->getCapability($capability)->getFieldName() : null,
             $capabilities,
         );
