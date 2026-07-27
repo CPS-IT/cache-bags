@@ -48,6 +48,6 @@ class CacheLifetimeCalculator
         /** @var non-negative-int $now */
         $now = $this->context->getPropertyFromAspect('date', 'accessTime', 0);
 
-        return \max(0, $expirationDate->getTimestamp() - $now);
+        return max(0, $expirationDate->getTimestamp() - $now);
     }
 }

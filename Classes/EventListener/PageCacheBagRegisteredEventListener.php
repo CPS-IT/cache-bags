@@ -60,7 +60,7 @@ final readonly class PageCacheBagRegisteredEventListener
     {
         $lifetime = $this->cacheLifetimeCalculator->forCacheBag($cacheBag) ?? PHP_INT_MAX;
 
-        return \array_map(
+        return array_map(
             static fn(string $cacheTag) => new CacheTag($cacheTag, $lifetime),
             $cacheBag->getCacheTags(),
         );

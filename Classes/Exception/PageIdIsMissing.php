@@ -30,7 +30,7 @@ final class PageIdIsMissing extends Exception
     public function __construct()
     {
         parent::__construct(
-            \sprintf('No page ID given. Use %1$s::forPage() or %1$s::forCurrentPage() instead.', PageCacheBag::class),
+            sprintf('No page ID given. Use %1$s::forPage() or %1$s::forCurrentPage() instead.', PageCacheBag::class),
             1719392652,
         );
     }
