@@ -22,7 +22,7 @@ $config = CsFixerConfig::create();
 $config->setHeader('This file is part of the TYPO3 CMS extension "cache_bags".');
 $config->setParallelConfig(ParallelConfigFactory::detect());
 $config->getFinder()
-    ->in(dirname(__DIR__, 2))
+    ->in(__DIR__, 2)
     ->notPath('.Build')
     ->ignoreDotFiles(false)
 ;

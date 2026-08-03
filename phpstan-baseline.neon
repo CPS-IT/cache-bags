@@ -4,82 +4,82 @@ parameters:
 			rawMessage: Access to constant RestrictionEndTime of internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability from outside its root namespace TYPO3.
 			identifier: classConstant.internalEnum
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: Access to constant RestrictionStartTime of internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability from outside its root namespace TYPO3.
 			identifier: classConstant.internalEnum
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to method get() of internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory from outside its root namespace TYPO3.'
 			identifier: method.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to method getCapability() of internal class TYPO3\CMS\Core\Schema\TcaSchema from outside its root namespace TYPO3.'
 			identifier: method.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to method getFieldName() of internal class TYPO3\CMS\Core\Schema\Capability\FieldCapability from outside its root namespace TYPO3.'
 			identifier: method.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to method has() of internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory from outside its root namespace TYPO3.'
 			identifier: method.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to method hasCapability() of internal class TYPO3\CMS\Core\Schema\TcaSchema from outside its root namespace TYPO3.'
 			identifier: method.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Call to static method getProperty() of internal class TYPO3\CMS\Extbase\Reflection\ObjectAccess from outside its root namespace TYPO3.'
 			identifier: staticMethod.internalClass
 			count: 2
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Parameter #1 $startTime of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::calculateExpirationDate() expects DateTimeInterface|int|null, mixed given.'
 			identifier: argument.type
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Parameter #2 $endTime of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::calculateExpirationDate() expects DateTimeInterface|int|null, mixed given.'
 			identifier: argument.type
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: Parameter $capability of anonymous function has typehint with internal enum TYPO3\CMS\Core\Schema\Capability\TcaSchemaCapability.
 			identifier: parameter.internalEnum
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: 'Parameter $schemaFactory of method CPSIT\Typo3CacheBags\Cache\Expiration\CacheExpirationCalculator::__construct() has typehint with internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory.'
 			identifier: parameter.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: Property $schemaFactory references internal class TYPO3\CMS\Core\Schema\TcaSchemaFactory in its type.
 			identifier: property.internalClass
 			count: 1
-			path: ../../Classes/Cache/Expiration/CacheExpirationCalculator.php
+			path: Classes/Cache/Expiration/CacheExpirationCalculator.php
 
 		-
 			rawMessage: Access to property $connection of internal class TYPO3\CMS\Core\Database\Query\ConcreteQueryBuilder from outside its root namespace TYPO3.
 			identifier: property.internalClass
 			count: 1
-			path: ../../Classes/Database/Query/QueriedTableAwareQueryBuilder.php
+			path: Classes/Database/Query/QueriedTableAwareQueryBuilder.php

@@ -12,14 +12,6 @@
 	},
 	"packageRules": [
 		{
-			"extends": [
-				":pinVersions"
-			],
-			"matchFileNames": [
-				"Tests/CGL/composer.json"
-			]
-		},
-		{
 			"enabled": false,
 			"matchCurrentVersion": "8.2",
 			"matchDatasources": [

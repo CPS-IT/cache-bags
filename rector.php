@@ -21,21 +21,16 @@ use Rector\ValueObject\PhpVersion;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rootPath = dirname(__DIR__, 2);
-
     $rectorConfig->paths([
-        $rootPath . '/Classes',
-        $rootPath . '/Configuration',
-        $rootPath . '/Tests',
-    ]);
-    $rectorConfig->skip([
-        $rootPath . '/Tests/CGL',
+        __DIR__ . '/Classes',
+        __DIR__ . '/Configuration',
+        __DIR__ . '/Tests',
     ]);
 
     $rectorConfig->phpVersion(PhpVersion::PHP_82);
 
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_82,
-        Typo3LevelSetList::UP_TO_TYPO3_13,
+        Typo3LevelSetList::UP_TO_TYPO3_14,
     ]);
 };

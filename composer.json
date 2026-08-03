@@ -15,13 +15,23 @@
 		"php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
 		"psr/event-dispatcher": "^1.0",
 		"psr/http-message": "^1.0 || ^2.0",
-		"typo3/cms-core": "~13.4.0",
-		"typo3/cms-extbase": "~13.4.0"
+		"typo3/cms-core": "~13.4.0 || ~14.3.0",
+		"typo3/cms-extbase": "~13.4.0 || ~14.3.0"
 	},
 	"require-dev": {
+		"armin/editorconfig-cli": "^2.2",
 		"eliashaeussler/version-bumper": "^4.0",
+		"ergebnis/composer-normalize": "^2.52",
+		"friendsofphp/php-cs-fixer": "^3.95",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan": "^2.2",
+		"phpstan/phpstan-phpunit": "^2.0",
 		"phpunit/phpcov": "^10.0 || ^11.0 || ^12.0 || ^13.0",
 		"phpunit/phpunit": "^11.0 || ^12.0 || ^13.0",
+		"saschaegerer/phpstan-typo3": "^2.0 || ^3.0",
+		"shipmonk/composer-dependency-analyser": "^1.8",
+		"ssch/typo3-rector": "^3.14",
+		"typo3/coding-standards": "^0.9.0",
 		"typo3/testing-framework": "^9.0.1"
 	},
 	"autoload": {
@@ -38,6 +48,8 @@
 		"allow-plugins": {
 			"cweagans/composer-patches": true,
 			"eliashaeussler/version-bumper": true,
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},
@@ -52,10 +64,34 @@
 		}
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"@cgl install"
+		"analyze": [
+			"@analyze:dependencies"
 		],
-		"cgl": "@composer -d Tests/CGL --",
+		"analyze:dependencies": "composer-dependency-analyser",
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": "@composer normalize",
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec --git-only",
+		"lint:php": "@fix:php --dry-run",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process -c rector.php",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse -c phpstan.neon",
 		"test": [
 			"@test:functional",
 			"@test:unit"
