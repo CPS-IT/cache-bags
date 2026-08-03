@@ -34,20 +34,20 @@ jobs:
 
       # Analyze
       - name: Analyze dependencies
-        run: composer cgl analyze:dependencies
+        run: composer analyze:dependencies
 
       # Linting
       - name: Lint composer.json
-        run: composer cgl lint:composer
+        run: composer lint:composer
       - name: Lint Editorconfig
-        run: composer cgl lint:editorconfig
+        run: composer lint:editorconfig
       - name: Lint PHP
-        run: composer cgl lint:php -- --format=checkstyle | cs2pr
+        run: composer lint:php -- --format=checkstyle | cs2pr
 
       # SCA
       - name: SCA PHP
-        run: composer cgl sca:php -- --error-format github
+        run: composer sca:php -- --error-format github
 
       # Migration
       - name: Run Rector migration
-        run: composer cgl migration:rector -- --dry-run
+        run: composer migration:rector -- --dry-run
